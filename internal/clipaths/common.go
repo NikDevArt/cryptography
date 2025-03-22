@@ -34,4 +34,5 @@ func DoAction(encrypt EncryptAction, decrypt DecryptAction) {
 		fmt.Println("Выход")
 	}
 	fmt.Println("############################")
+	fmt.Println()
 }
