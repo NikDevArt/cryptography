@@ -7,13 +7,13 @@ type key struct {
 	invert   map[byte]byte
 }
 
-func newSimpleSubstitutionCipherKey(m int, keyTable [2][]byte) *key {
+func newSimpleSubstitutionCipherKey(keyTable [2][]byte) *key {
 	k := &key{
 		straight: make(map[byte]byte),
 		invert:   make(map[byte]byte),
 	}
 
-	for i := 0; i < m; i++ {
+	for i := 0; i < len(keyTable[0]); i++ {
 		k.straight[keyTable[0][i]] = keyTable[1][i]
 		k.invert[keyTable[1][i]] = keyTable[0][i]
 	}
@@ -35,9 +35,9 @@ type SimpleSubstitutionCipher struct {
 	key *key
 }
 
-func NewSimpleSubstitutionCipher(m int, keyTable [2][]byte) *SimpleSubstitutionCipher {
+func NewSimpleSubstitutionCipher(keyTable [2][]byte) *SimpleSubstitutionCipher {
 	c := &SimpleSubstitutionCipher{
-		key: newSimpleSubstitutionCipherKey(m, keyTable),
+		key: newSimpleSubstitutionCipherKey(keyTable),
 	}
 	return c
 }

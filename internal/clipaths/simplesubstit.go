@@ -21,7 +21,7 @@ func SimpleSubstitPath() {
 		}
 	}
 
-	crypt := simplesubstit.NewSimpleSubstitutionCipher(len(k[0]), k)
+	crypt := simplesubstit.NewSimpleSubstitutionCipher(k)
 
 	DoAction(crypt.Encrypt, crypt.Decrypt)
 }
