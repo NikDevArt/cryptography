@@ -6,11 +6,18 @@ type Alphabet struct {
 	symbolId map[byte]int
 	idSymbol map[int]byte
 	size     int
+	userSize int
 }
 
-func NewAlphabet() *Alphabet {
+func NewAlphabet(size ...int) *Alphabet {
 	a := &Alphabet{}
 	a.initAlphabet()
+
+	a.userSize = a.size
+	if len(size) != 0 {
+		a.userSize = size[0]
+	}
+
 	return a
 }
 
@@ -30,8 +37,8 @@ func (a *Alphabet) GetSymbolById(id int) byte {
 	return b
 }
 
-func (a *Alphabet) GetSize() int {
-	return a.size
+func (a *Alphabet) GetUserSize() int {
+	return a.userSize
 }
 
 func (a *Alphabet) GetFull() string {
